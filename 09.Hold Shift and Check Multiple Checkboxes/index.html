@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Check multiple boxes with Shift</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Check one item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Hold down your Shift key</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Check a lower item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Everything inbetween should also be set to checked</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Try do it with out any libraries</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Just regular JavaScript</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Good Luck!</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Don't forget to tweet your result!</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Don't forget to tweet your result!</p>
+    </div>
+  </div>
+
+  <script>
+    const checkedBoxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+    let firstChecked;
+
+  function handleCheck(e) {
+    let inBetween = false;
+    //Check if user has the shift key pressed
+    // and check that they are checking it
+    if (e.shiftKey && this.checked) {
+      //loop over every item and check if it was checked
+      checkedBoxes.forEach(thisCheckbox => {
+
+        if (thisCheckbox === this || thisCheckbox === firstChecked) {
+          inBetween = !inBetween;
+        }
+
+        if (inBetween) {
+          thisCheckbox.checked = true;
+        }
+      });
+    }
+    //Uncheck selected items
+    if (e.shiftKey && this.checked == false) {
+      checkedBoxes.forEach(thisCheckbox => {
+
+        if (thisCheckbox === this || thisCheckbox === firstChecked) {
+          inBetween = false;
+        }
+
+        if (!inBetween) {
+          thisCheckbox.checked = false;
+        }
+      })
+    }
+    firstChecked = this;
+  }
+
+    checkedBoxes.forEach(thisCheckbox => thisCheckbox.addEventListener('click', handleCheck));
+  </script>
+</body>
+</html>
