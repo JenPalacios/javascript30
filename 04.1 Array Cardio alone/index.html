@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio -- ALONE 💀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <script>
+    // Get your shorts on - this is an array workout!
+    // ## Array Cardio Day 1
+
+    // Some data we can work with
+
+    const singers = [
+      { first: 'Amy', last: 'Winehouse', born: 1983, died: 2011 },
+      { first: 'Micahel', last: 'Jackson', born: 1958, died: 2009},
+      { first: 'Kurt', last: 'Cobain', born: 1967 , died: 1994},
+      { first: 'Juan', last: 'Gabriel', born: 1950, died: 2016 },
+      { first: 'Bob', last: 'Marley', born: 1945 , died: 1981 },
+      { first: 'Jimi', last: 'Hendrix', born: 1942 , died: 1970 },
+      { first: 'Elvis', last: 'Presley', born: 1935 , died: 1977 },
+      { first: 'Jim', last: 'Morrison', born: 1943 , died: 1971 },
+      { first: 'Prince', last: '', born: 1958 , died: 2016 },
+      { first: 'John', last: 'Lennon', born: 1940 , died: 1980  },
+      { first: 'Tupac', last: 'Shakur', born: 1971  , died: 1996 },
+      { first: 'Freddie', last: 'Mercury', born: 1946 , died: 1991 }
+    ];
+
+    // Array.prototype.filter()
+    // 1. Filter the list of singers for those who were born in the 1940's and order them from lowest to highest
+    const nineteenForties = singers
+      .filter(thisSinger =>(thisSinger.born >= 1940 && thisSinger.born <1950))
+      .sort((a,b) => (a.born > b.born ? 1 : -1));
+    console.table(nineteenForties);
+
+    // Array.prototype.map()
+    // 2. Give us an array of the singers' first and last names and order them alphabetically
+    const singerNames = singers
+      .map(thisSinger => (thisSinger.first + ' ' + thisSinger.last));
+
+    const orderedNames = singerNames.sort((a, b) => (a > b ? 1 : -1));
+
+    console.log(orderedNames);
+
+
+    // Array.prototype.sort()
+    // 3. Sort the singers by birthdate, oldest to youngest
+    const whoIsOldest = singers.sort((a, b) => (a.born > b.born ? 1 : -1));
+    console.table(whoIsOldest);
+
+    // Array.prototype.reduce()
+    // 4. How many years did all the singers live?
+    const allYearsLived = singers.reduce((yearsLived, singers) => {
+      return yearsLived + (singers.died - singers.born);
+    }, 0);
+
+    console.log(allYearsLived);
+
+    // 5. Sort the singers by years lived
+    const howOld = singers.sort(function(a, b){
+      const singerA = a.died - a.born;
+      const singerB = b.died - b.born;
+      return (singerA > singerB ? -1 : 1);
+    });
+
+    console.table(howOld);
+
+    // 7. sort Exercise
+    // Sort the people alphabetically by last name
+
+    // 8. Reduce Exercise
+    // Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const transportation = data.reduce(function(obj, item) {
+      if(!obj[item]){
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+
+    console.log(transportation);
+
+  </script>
+</body>
+</html>
