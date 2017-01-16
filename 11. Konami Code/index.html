@@ -8,13 +8,13 @@
 <body>
   <div class="container">
     <div class="image-container">
-      <img class="superman" src="superman.jpg" alt="Superman">
+      <img class="superman" src="popeye.jpg" alt="Popeye">
     </div>
-    <p>Type 'kryptonite'</p>
+    <p>Type 'spinach'</p>
   </div>
   <script>
     const pressedKey = [];
-    const secretCode  = 'kryptonite'
+    const secretCode  = 'spinach'
 
     window.addEventListener('keyup', (e) => {
       pressedKey.push(e.key);
@@ -22,7 +22,7 @@
       pressedKey.splice(-secretCode.length - 1, pressedKey.length - secretCode.length);
       console.log(pressedKey);
       if (pressedKey.join('').includes(secretCode)){
-        document.querySelector('.superman').src='old_superman.png';
+        document.querySelector('.superman').src='popeye-spinach.jpg';
       }
     })
   </script>
