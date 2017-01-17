@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KONAMI CODE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="image-container">
+      <img class="superman" src="popeye.jpg" alt="Popeye">
+    </div>
+    <p>Type 'spinach'</p>
+  </div>
+  <script>
+    const pressedKey = [];
+    const secretCode  = 'spinach'
+
+    window.addEventListener('keyup', (e) => {
+      pressedKey.push(e.key);
+      // pressedKey.splice(-secretCode.length - 1, pressedKey.length - secretCode.length);
+      pressedKey.splice(-secretCode.length - 1, pressedKey.length - secretCode.length);
+      console.log(pressedKey);
+      if (pressedKey.join('').includes(secretCode)){
+        document.querySelector('.superman').src='popeye-spinach.jpg';
+      }
+    })
+  </script>
+</body>
+</html>
