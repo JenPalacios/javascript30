@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio -- ALONE 💀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="prism.css">
+</head>
+<body class="language-javascript">
+  <div class="container">
+    <p><em>Psst: have a look at the JavaScript Console for the answers.</em> 💁</p>
+    <p>Work with the following array to answer the following questions.</p>
+    <pre><code> const singers = [
+        { first: 'Amy', last: 'Winehouse', born: 1983, died: 2011 },
+        { first: 'Micahel', last: 'Jackson', born: 1958, died: 2009},
+        { first: 'Kurt', last: 'Cobain', born: 1967 , died: 1994},
+        { first: 'Juan', last: 'Gabriel', born: 1950, died: 2016 },
+        { first: 'Bob', last: 'Marley', born: 1945 , died: 1981 },
+        { first: 'Jimi', last: 'Hendrix', born: 1942 , died: 1970 },
+        { first: 'Elvis', last: 'Presley', born: 1935 , died: 1977 },
+        { first: 'Jim', last: 'Morrison', born: 1943 , died: 1971 },
+        { first: 'Prince', last: '', born: 1958 , died: 2016 },
+        { first: 'John', last: 'Lennon', born: 1940 , died: 1980  },
+        { first: 'Tupac', last: 'Shakur', born: 1971  , died: 1996 },
+        { first: 'Freddie', last: 'Mercury', born: 1946 , died: 1991 }
+      ];</code></pre>
+    <p>1. Filter the list of singers for those who were born in the 1940's and order them from lowest to highest.</p>
+    <pre><code>
+      const nineteenForties = singers
+        .filter(thisSinger =>(thisSinger.born >= 1940 && thisSinger.born <1950))
+        .sort((a,b) => (a.born > b.born ? 1 : -1));
+    </code></pre>
+    <p>2. Give an array of the singers' first and last names and order them alphabetically</p>
+    <pre><code>
+      const singerNames = singers
+        .map(thisSinger => (thisSinger.first + ' ' + thisSinger.last));
+      const orderedNames = singerNames
+        .sort((a, b) => (a > b ? 1 : -1));
+    </code></pre>
+    <p>3. Sort the singers by birth date, oldest to youngest.</p>
+    <pre><code>const whoIsOldest = singers.sort((a, b) => (a.born > b.born ? 1 : -1));</code></pre>
+    <p>4. How many years did all the singers live?</p>
+    <pre><code>
+      const allYearsLived = singers.reduce((yearsLived, singers) => {
+        return yearsLived + (singers.died - singers.born);
+      }, 0);
+    </code></pre>
+    <p>5. Sort the singers by years lived.</p>
+    <pre><code>
+      const howOld = singers.sort(function(a, b){
+        const singerA = a.died - a.born;
+        const singerB = b.died - b.born;
+        return (singerA > singerB ? -1 : 1);
+      });
+    </code></pre>
+    <p>Use the following array to answer question number 6.</p>
+    <pre><code>
+    const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick',
+    'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul',
+    'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony',
+    'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric',
+    'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric',
+    'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin',
+    'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve',
+    'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black Elk', 'Blair, Robert',
+    'Blair, Tony', 'Blake, William'];
+    </code></pre>
+    <p>6. Sort the people alphabetically by last name</p>
+    <pre><code>
+      const alpha = people.sort((lastOne, nextOne) => {
+        const [aLast, aFirst] = lastOne.split(', ');
+        const [bLast, bFirst] = nextOne.split(', ');
+        return(aLast > bLast ? 1 : -1);
+      });
+    </code></pre>
+    <p>REDUCE EXCERCISE</p>
+    <p>7. Sum up the instances of each of these</p>
+    <pre><code>
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car',
+    'van', 'car', 'truck' ];
+    </code></pre>
+    <pre><code>
+    const transportation = data.reduce(function(obj, item) {
+      if(!obj[item]){
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+    </code></pre>
+  </div>
+  <script src="prism.js"></script>
+  <script>
+    const singers = [
+      { first: 'Amy', last: 'Winehouse', born: 1983, died: 2011 },
+      { first: 'Micahel', last: 'Jackson', born: 1958, died: 2009},
+      { first: 'Kurt', last: 'Cobain', born: 1967 , died: 1994},
+      { first: 'Juan', last: 'Gabriel', born: 1950, died: 2016 },
+      { first: 'Bob', last: 'Marley', born: 1945 , died: 1981 },
+      { first: 'Jimi', last: 'Hendrix', born: 1942 , died: 1970 },
+      { first: 'Elvis', last: 'Presley', born: 1935 , died: 1977 },
+      { first: 'Jim', last: 'Morrison', born: 1943 , died: 1971 },
+      { first: 'Prince', last: '', born: 1958 , died: 2016 },
+      { first: 'John', last: 'Lennon', born: 1940 , died: 1980  },
+      { first: 'Tupac', last: 'Shakur', born: 1971  , died: 1996 },
+      { first: 'Freddie', last: 'Mercury', born: 1946 , died: 1991 }
+    ];
+
+    const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+
+    // Array.prototype.filter()
+    // 1. Filter the list of singers for those who were born in the 1940's and order them from lowest to highest
+    const nineteenForties = singers
+      .filter(thisSinger =>(thisSinger.born >= 1940 && thisSinger.born <1950))
+      .sort((a,b) => (a.born > b.born ? 1 : -1));
+    console.log('ANSWER 1:');
+    console.table(nineteenForties);
+
+    // Array.prototype.map()
+    // 2. Give us an array of the singers' first and last names and order them alphabetically
+    const singerNames = singers
+      .map(thisSinger => (thisSinger.first + ' ' + thisSinger.last));
+
+    const orderedNames = singerNames.sort((a, b) => (a > b ? 1 : -1));
+    console.log(' ');
+    console.log('ANSWER 2:');
+    console.log(orderedNames);
+
+
+    // Array.prototype.sort()
+    // 3. Sort the singers by birth date, oldest to youngest
+    const whoIsOldest = singers.sort((a, b) => (a.born > b.born ? 1 : -1));
+    console.log(' ');
+    console.log('ANSWER 3:');
+    console.table(whoIsOldest);
+
+    // Array.prototype.reduce()
+    // 4. How many years did all the singers live?
+    const allYearsLived = singers.reduce((yearsLived, singers) => {
+      return yearsLived + (singers.died - singers.born);
+    }, 0);
+    console.log(' ');
+    console.log('ANSWER 4:');
+    console.log(allYearsLived);
+
+    // 5. Sort the singers by years lived
+    const howOld = singers.sort(function(a, b){
+      const singerA = a.died - a.born;
+      const singerB = b.died - b.born;
+      return (singerA > singerB ? -1 : 1);
+    });
+    console.log(' ');
+    console.log('ANSWER 5:');
+    console.table(howOld);
+
+    // 6. sort Exercise
+    // Sort the people alphabetically by last name
+    const alpha = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return(aLast > bLast ? 1 : -1);
+    });
+    console.log(' ');
+    console.log('ANSWER 6:');
+    console.log(alpha);
+
+    // 7. Reduce Exercise
+    // Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const transportation = data.reduce(function(obj, item) {
+      if(!obj[item]){
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+    console.log(' ');
+    console.log('ANSWER 7:');
+    console.log(transportation);
+
+  </script>
+</body>
+</html>
